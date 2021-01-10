@@ -38,7 +38,7 @@
             if ($this->session->flashdata('err') == true) { ?>
                 <p style="color: red;"><?php echo $this->session->flashdata('err'); ?></p>
             <?php } ?>
-            <form class="form-horizontal" action="<?= base_url('mahasiswa/usr/create'); ?>" method="post">
+            <form class="form-horizontal" action="<?= base_url('mahasiswa/mhs/create'); ?>" method="post">
                 <div class="card-body">
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">NPM</label>
@@ -74,7 +74,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-info">Cretae User</button>
+                    <button type="submit" class="btn btn-info">Cretae Mahasiswa</button>
                     <a href="<?= base_url('mahasiswa/usr'); ?>" class="btn btn-default float-right">Cancel</a>
                 </div>
                 <!-- /.card-footer -->

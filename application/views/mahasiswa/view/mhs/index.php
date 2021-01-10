@@ -55,8 +55,8 @@
                                 <td><?= $row->nama; ?></td>
                                 <td><?= $row->nama_prodi; ?></td>
                                 <td align="center">
-                                    <button type="button" class="btn btn-outline-info">Edit</button>
-                                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                                    <a href="<?= base_url('/mahasiswa/mhs/edit/' . $row->id); ?>" class="btn btn-outline-info">Edit</a>
+                                    <a href="<?= base_url('/mahasiswa/mhs/delete/' . $row->id); ?>" class="btn btn-outline-danger">Delete</a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
