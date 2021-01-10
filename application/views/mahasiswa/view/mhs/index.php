@@ -10,8 +10,13 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('mahasiswa/mhs') ?>">Mhs</a></li>
-                        <li class="breadcrumb-item active">index</li>
+                        <?php foreach ($wrapper as $val) : ?>
+                            <?php if ($val->link) { ?>
+                                <li class="breadcrumb-item"><a href="<?= base_url($val->link) ?>"><?= $val->title ?></a></li>
+                            <?php } else { ?>
+                                <li class="breadcrumb-item active"><?= $val->title ?></li>
+                        <?php }
+                        endforeach; ?>
                     </ol>
                 </div>
             </div>

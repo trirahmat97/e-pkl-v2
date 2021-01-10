@@ -123,7 +123,7 @@ class Mhs extends CI_Controller
                     'type' => 'active'
                 ),
                 (object)array(
-                    'title' => 'Add',
+                    'title' => 'Edit',
                     'link' => null,
                     'type' => 'active'
                 )

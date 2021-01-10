@@ -8,6 +8,17 @@ class ModelPkl extends CI_Model
         return $this->db->get($table, $where)->result();
     }
 
+    public function pengajuanPkl($id)
+    {
+        $this->db->select('mp.user_id, pkl.id as pkl_id, pkl.tanggal_pkl, pkl.thn_ajaran, pkl.createAt, pkl.status_daftar, pkl.status_val, pkl.status_pkl, p.nama as perusahaan');
+        $this->db->from('mhs_pkl as mp');
+        $this->db->join('pkl', 'pkl.id = mp.pkl_id');
+        $this->db->join('perusahaan as p', 'p.id = pkl.perusahaan_id');
+        $this->db->where('mp.user_id', $id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function showPklById($table, $where = null)
     {
         return $this->db->get($table)->result();
