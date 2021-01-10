@@ -29,8 +29,33 @@
     <div class="card">
       <div class="card-body register-card-body">
         <p class="login-box-msg">Register!</p>
+        <?php
+        if ($this->session->flashdata('err') == true) { ?>
+          <center>
+            <p style="color: red;">
+              <?php echo $this->session->flashdata('err'); ?>
+            </p>
+          </center>
+        <?php } ?>
+
+        <?php
+        if ($this->session->flashdata('sukses') == true) { ?>
+          <center>
+            <p style="color: green;">
+              <?php echo $this->session->flashdata('sukses'); ?>
+            </p>
+          </center>
+        <?php } ?>
 
         <form action="<?php echo base_url('login/create'); ?>" method="post">
+          <div class="input-group mb-3">
+            <input type="text" name="name" class="form-control" placeholder="Name">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
           <div class="input-group mb-3">
             <input type="text" name="username" class="form-control" placeholder="Username">
             <div class="input-group-append">
@@ -55,15 +80,6 @@
               </div>
             </div>
           </div>
-          <div class="input-group mb-3">
-            <input type="password" name="confirm" class="form-control" placeholder="Retype password">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-              </div>
-            </div>
-          </div>
-
           <div class="form-group has-feedback">
             <?= $image; ?><br><br>
             <input type="text" class="form-control" name="cap" placeholder="input captcha" required="">

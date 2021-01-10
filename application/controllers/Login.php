@@ -101,30 +101,22 @@ class Login extends CI_Controller
 		if (isset($captcha)) { #cek variabel $captcha kosong/tidak
 			if (strtoupper($captcha) == strtoupper($word)) { #proses pencocokan captcha
 				$post = $this->input->post();
-
-				//id auto
 				$this->form_validation->set_rules('username', 'username', 'trim|required');
 				if ($this->form_validation->run() == true) {
 					$username = $post['username'];
-					if ($this->db->get_where('user', array('username' => $username))->num_rows() == null) {
-						$this->db->select_max('iduser');
-						$kes = $this->db->get('user')->row();
-						$no = $kes->iduser;
-						$nor = substr($no, 3, 4);
-						$nor++;
-						$id = 'USR' . sprintf("%04s", $nor);
-
+					if (!$this->db->get_where('users', array('username' => $username))->row()) {
 						$data = array(
-							'iduser'	=> $id,
+							'name'	=> $post['name'],
 							'username'	=> $post['username'],
+							'email'	=> $post['email'],
 							'password'	=> md5($post['password']),
-							'level'		=> 3,
+							'level'		=> '33',
 						);
-						$cek = $this->db->insert('user', $data);
+						$this->db->insert('users', $data);
 						$this->session->set_flashdata('sukses', 'Akun Anda Berhasil di Buat');
 						redirect('login/register');
 					} else {
-						$this->session->set_flashdata('sukses', 'username Telah digunakan');
+						$this->session->set_flashdata('err', 'username Telah digunakan');
 						redirect('login/register');
 					}
 				}
