@@ -56,7 +56,9 @@
                                 <td><?= $row->nama_prodi; ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('/mahasiswa/mhs/edit/' . $row->id); ?>" class="btn btn-outline-info">Edit</a>
-                                    <a href="<?= base_url('/mahasiswa/mhs/delete/' . $row->id); ?>" class="btn btn-outline-danger">Delete</a>
+                                    <?php if ($row->user_id == $this->session->userdata('iduser')) : ?>
+                                        <a href="<?= base_url('/mahasiswa/mhs/delete/' . $row->id); ?>" class="btn btn-outline-danger">Delete</a>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                             <?php $i++; ?>

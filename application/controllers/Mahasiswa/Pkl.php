@@ -18,7 +18,6 @@ class Pkl extends CI_Controller
         $config = array(
             'title' => 'Data Perusahaan',
         );
-
         $data = array(
             "header"     => $this->load->view('mahasiswa/include/header', $config, true),
             "navbar"     => $this->load->view('mahasiswa/include/navbar', array(), true),
