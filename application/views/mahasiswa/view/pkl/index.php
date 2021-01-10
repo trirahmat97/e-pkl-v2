@@ -10,8 +10,13 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('mahasiswa/mhs') ?>">Mhs</a></li>
-                        <li class="breadcrumb-item active">index</li>
+                        <?php foreach ($wrapper as $val) : ?>
+                            <?php if ($val->link) { ?>
+                                <li class="breadcrumb-item"><a href="<?= base_url($val->link) ?>"><?= $val->title ?></a></li>
+                            <?php } else { ?>
+                                <li class="breadcrumb-item active"><?= $val->title ?></li>
+                        <?php }
+                        endforeach; ?>
                     </ol>
                 </div>
             </div>
@@ -24,7 +29,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">List <?= $title ?> / <?= $this->session->username ?></h3>
+                <h3 class="card-title">List <?= $title ?></h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -32,7 +37,7 @@
                     <div>
                     </div>
                     <div>
-                        <button type="button" class="btn btn-outline-success"><i class="fas fa-plus"></i> Add Perusahaan</button>
+                        <a href="<?= base_url('mahasiswa/pkl/add'); ?>" class="btn btn-outline-success"><i class="fas fa-plus"></i> Add Perusahaan</a>
                     </div>
                 </div>
                 </br>
@@ -65,8 +70,8 @@
                                 <td><?= $row->kode_pos; ?></td>
                                 <td><?= $row->alamat; ?></td>
                                 <td align="center">
-                                    <button type="button" class="btn btn-outline-info">Edit</button>
-                                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                                    <a href="<?= base_url('mahasiswa/pkl/edit/' . $row->id); ?>" class="btn btn-outline-info">Edit</a>
+                                    <a href="<?= base_url('mahasiswa/pkl/delete/' . $row->id); ?>" class="btn btn-outline-danger">Delete</a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
